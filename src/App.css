@@ -236,3 +236,73 @@ body {
   background: #000;
   border-radius: 50%
 }
+
+
+
+.dflex, .content_wrapper, .DropDownMenuContainer header, header .menu, .menu_container, .menu_container .btn_close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.DropDownMenuContainer .container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+.DropDownMenuContainer .content_wrapper {
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+.DropDownMenuContainer header {
+  justify-content: flex-end;
+  width: 100%;
+  height: 58px;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 0 50px;
+}
+.DropDownMenuContainer header .menu {
+  width: 58px;
+  height: 58px;
+  cursor: pointer;
+  background-color: purple;
+}
+.DropDownMenuContainer .menu_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  flex-direction: column;
+}
+.DropDownMenuContainer .menu_container a {
+  display: inline-flex;
+  color: #fff;
+  text-decoration: none;
+  height: 80px;
+  overflow: hidden;
+  font-size: 2vw;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .DropDownMenuContainer .menu_container a {
+    font-size: 22px;
+ }
+}
+.DropDownMenuContainer .menu_container a + a {
+  margin-top: 1vw;
+}
+.DropDownMenuContainer .menu_container .btn_close {
+  width: 58px;
+  height: 58px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 58px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 18px;
+}

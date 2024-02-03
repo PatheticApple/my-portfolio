@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import techQuestions from './tech.json'
 import mathQuestions from './math.json'
 import countryQuestions from './country.json'
-
+import {motion, AnimatePresence} from "framer-motion";
 
 const useMousePosition = () => {
     const [
@@ -41,33 +41,153 @@ function FaceTest() {
     const eyeball = (event) => {
         const eyes = document.querySelectorAll(".eye");
         eyes.forEach((eye) => {
-          const x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
-          const y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
-          const radian = Math.atan2(event.pageX - x, event.pageY - y);
-          const rot = (radian * (180 / Math.PI) * -1) + 270;
-          eye.style.transform = `rotate(${rot}deg)`;
+            const x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+            const y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
+            const radian = Math.atan2(event.pageX - x, event.pageY - y);
+            const rot = (radian * (180 / Math.PI) * -1) + 270;
+            eye.style.transform = `rotate(${rot}deg)`;
         });
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         document.body.addEventListener("mousemove", eyeball);
-    
+
         return () => {
-          document.body.removeEventListener("mousemove", eyeball);
+            document.body.removeEventListener("mousemove", eyeball);
         };
-      }, []);
-    
-      return (
+    }, []);
+
+    return (
         <div className="App">
-          <div className="face">
-            <div className="eyes">
-              <div className="eye"></div>
-              <div className="eye"></div>
+            <div className="face">
+                <div className="eyes">
+                    <div className="eye"></div>
+                    <div className="eye"></div>
+                </div>
             </div>
-          </div>
         </div>
-      );
+    );
 }
+
+function DropDownMenu() {
+
+    const [open, setOpen] = useState(false);
+  
+    const isOpen = ()=>{
+      setOpen(true);
+    }
+  
+    const closeMenu = ()=>{
+      setOpen(false);
+    }
+  
+    //lets start animation
+    const item={
+      exit:{
+        opacity:0,
+        height:0,
+        transition:{
+          ease:"easeInOut",
+          duration:0.3,
+          delay:1.2
+        }
+      }
+    }
+  
+    return (
+      <div className="DropDownMenuContainer">
+        <header className="headerDropDown">
+          <div className="menu" onClick={isOpen}>
+            <i className="fa fa-bars"></i>
+          </div>       
+        </header>
+        <AnimatePresence>
+          {
+            open &&(
+              <motion.div className="menu_container"
+                variants={item}
+                initial={{height:0,opacity:0}}
+                animate={{height:"100vh", opacity:1}}
+                transition={{duration:.5}}
+                exit="exit"
+              >
+                <div className="btn_close" onClick={closeMenu}>X</div>
+                <motion.a href=""
+                   initial={{y:80,opacity:0}}
+                   animate={{y:0, opacity:1}}
+                   transition={{delay:.8}}
+                   exit={{
+                    opacity:0,
+                    y:90,
+                      transition:{
+                        ease:"easeInOut",
+                        delay:1
+                      }
+                   }}
+                >Home</motion.a>
+                <motion.a href=""
+                   initial={{y:80,opacity:0}}
+                   animate={{y:0, opacity:1}}
+                   transition={{delay:.7}}
+                   exit={{
+                    opacity:0,
+                    y:90,
+                      transition:{
+                        ease:"easeInOut",
+                        delay:.8
+                      }
+                   }}
+                >About</motion.a>
+                <motion.a href=""
+                   initial={{y:80,opacity:0}}
+                   animate={{y:0, opacity:1}}
+                   transition={{delay:.6}}
+                   exit={{
+                    opacity:0,
+                    y:90,
+                      transition:{
+                        ease:"easeInOut",
+                        delay:.6
+                      }
+                   }}
+                >Portfolio</motion.a>
+                <motion.a href=""
+                   initial={{y:80,opacity:0}}
+                   animate={{y:0, opacity:1}}
+                   transition={{delay:.5}}
+                   exit={{
+                    opacity:0,
+                    y:90,
+                      transition:{
+                        ease:"easeInOut",
+                        delay:.4
+                      }
+                   }}
+                >Blog</motion.a>
+                <motion.a href=""
+                   initial={{y:80,opacity:0}}
+                   animate={{y:0, opacity:1}}
+                   transition={{delay:.4}}
+                   exit={{
+                    opacity:0,
+                    y:90,
+                      transition:{
+                        ease:"easeInOut",
+                        delay:.2
+                      }
+                   }}
+                >Contact</motion.a>
+              </motion.div>
+            )
+          }    
+        </AnimatePresence>  
+       <div className="content_wrapper">
+        <p>Animated Navigation</p>
+       </div>
+      </div>
+    );
+  }
+
 
 function MyName() {
     return (
@@ -85,12 +205,12 @@ function MyName() {
                         <div className="col-12 col-md-6 p-5">
 
                             <div className="eyesTest">
-                            <div class="face">
-                                <div class="eyes">
-                                    <div class="eye"></div>
-                                    <div class="eye"></div>
+                                <div class="face">
+                                    <div class="eyes">
+                                        <div class="eye"></div>
+                                        <div class="eye"></div>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -105,9 +225,10 @@ function MyName() {
 export default function Home() {
     return (
         <div>
+            <DropDownMenu/>
             <MyName />
             <TrackMouseMovement />
-            <FaceTest/>
+            <FaceTest />
         </div>
     )
 }
