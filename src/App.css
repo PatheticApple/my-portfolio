@@ -63,14 +63,14 @@ body {
 }
 
 #companyLogo {
-  height: 100px;
+  height: 80px;
   margin: auto;
   max-width: 300px;
 }
 
 @media (max-width: 767px) {
   #companyLogo {
-    height: 80px;
+    height: 50px;
     margin: auto;
     max-width: 200px;
   }
@@ -132,4 +132,107 @@ body {
   border-width: 5px;
   margin-left: 3rem;
   margin-right: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------- */
+
+.homeHeadContainer {
+  height: 90vh;
+}
+.nameContainer {
+  height: 50vh;
+  background-color: purple;
+  margin: auto;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blueBackgroundTest {
+  background-color: blue;
+}
+
+@media screen and (min-width: 770px) {
+  .desktopStartView {
+      text-align: left;
+  }
+}
+
+.navHeight {
+  height: 10vh;
+}
+
+
+.face{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #ffcd00;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.face::before{
+  content: '';
+  position: absolute;
+  top: 180px;
+  width: 150px;
+  height: 70px;
+  background: #b57700;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  transition: 0.5s
+}
+.face:hover::before{
+  top: 210px;
+  width: 150px;
+  height: 20px;
+  background: #b57700;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.eyes{
+  position: relative;
+  top: -40px;
+  display: flex
+}
+.eyes .eye{
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: #fff;
+  margin: 0 15px;
+  border-radius: 50%
+}
+.eyes .eye::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border-radius: 50%
 }

@@ -11,7 +11,7 @@ import Footer from './Components/Footer';
 import Home from './Pages/HomePage';
 import Question from './Pages/QuestionPage';
 import Result from './Pages/ResultPage';
-
+import Home2 from './Pages/HomePage copy'
 
 function App() {
   const [score, setScore] = useState(0);
@@ -41,8 +41,9 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/Question/:id/:category' element={<Question updateScore={updateScore}/>}></Route>
         <Route path='/Result/:category' element={<Result score={score}/>}></Route>
+        <Route path='/Home' element={<Home2/>}></Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       {/* <BoostrapLink /> */}
     </BrowserRouter>
   );
